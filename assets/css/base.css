@@ -1,0 +1,203 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 16px;
+    line-height: 1.5;
+    background: #efefef;
+}
+
+a{
+    text-decoration: none;
+    color:#333;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+button:focus{outline: 0}
+
+.app-container {
+    display: flex;
+    justify-content: center;
+}
+
+.task-container{
+    max-width: 460px;
+    width: 100%;
+    background: #fff;
+    margin-top: 2rem;
+    padding:1rem;
+    box-shadow: 0 3px 6px 1px rgba(0,0,0,.08), 0 7px 14px 1px rgba(50,50,93,.1);
+    border-radius: 5px;
+}
+
+.task-header {
+    font-size: 22px;
+    position: relative;
+    padding-left: 10px;
+}
+
+.task-header::before{
+    content: '';
+    width: 3px;
+    height: 80%;
+    position:absolute;
+    left: 0;
+    top: 4px;
+    background: rgba(52, 152, 219,1.0);
+}
+
+.task-input-box{
+   margin: 10px;
+}
+
+.task-list {
+    list-style: none;
+}
+
+.task-list-item {
+    position: relative;
+}
+
+.task-list-item.editing {
+    padding: 10px;
+    background: #eaeaea;
+    border-radius: 3px;
+    border: 1px solid #ddd;
+}
+
+.task-list-item:hover .task-actions--show-on-hover{
+    display: inline-block;
+}
+
+.task-list-item.editing .task-actions--show-on-hover {
+    display: none;
+}
+
+.task-title{ 
+    font-size: 18px;
+}
+
+.task-list-item.completed .task-title{  
+    text-decoration: line-through;
+}
+
+.task-list-item.completed .task-title > a{  
+    color: #999;
+    font-size: 0.8em;
+}
+
+.task-actions--show-on-hover,
+.editing .state--in-view,
+.state--in-edit{
+    display:none;
+}
+
+.state--in-view,
+.editing .state--in-edit{
+    display:block;
+}
+
+.app-textbox{
+    outline: 0;
+}
+
+.app-textbox--primary {
+    font-size: 20px;
+    width: 80%;
+    border: 0;
+    border-bottom: 1px solid #a1a1a1;
+    padding-bottom:5px;
+}
+
+.app-textbox--secondary {
+    width: 100%;
+    padding: 10px;
+    border: 0;
+}
+
+.app-textbox::-webkit-input-placeholder {
+    color: #ccc;
+}
+
+.task-actions--primary{
+    position: absolute;
+    left: -53px;
+    top: -3px;
+}
+
+.float-right{
+    float: right;
+}
+
+.float-left{
+    float: left;
+}
+
+.m-t-10px {
+    margin-top: 10px;
+}
+
+.text-right{
+    text-align: right;
+}
+
+.task-list-item.completed .app-btn--edit{
+    display: none;
+}
+
+.app-btn{
+    border: 0;
+    background: none;
+    cursor: pointer;
+}
+
+.app-btn--primary{
+    border: solid 1p #a1a1a1;
+    padding: 10px 20px;
+    border-radius: 999em;
+}
+
+.app-btn--secondary{
+    border: solid 1px #a1a1a1;
+    padding: 5px 10px;
+    border-radius: 999em;
+    font-size: 0.7em;
+}
+
+.app-btn--green {
+    border: solid 1px rgba(26, 188, 156,1.0);
+    background:rgba(26, 188, 156,0.8);
+    color: #fff;
+}
+
+.app-btn--red {
+    border: solid 1px rgba(231, 76, 60,0.2);
+    background:rgba(231, 76, 60,0.5);
+    color: #fff;
+}
+    
+.icon {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    stroke-width: 0;
+    stroke: currentColor;
+    fill: #454545;
+  }
+
+  @media (max-width: 599px) { 
+    .task-container{
+        width: 94%;
+        margin: 1rem auto;
+    }   
+    .app-textbox--primary {
+        width: 70%;
+    }
+  }
