@@ -93,6 +93,10 @@ button:focus{outline: 0}
     font-size: 0.8em;
 }
 
+.task-list-item.completed .task-title > a:hover{
+    text-decoration: none;
+}
+
 .task-actions--show-on-hover,
 .editing .state--in-view,
 .state--in-edit{
@@ -156,6 +160,7 @@ button:focus{outline: 0}
     border: 0;
     background: none;
     cursor: pointer;
+    transition:background .25s;
 }
 
 .app-btn--primary{
@@ -177,12 +182,20 @@ button:focus{outline: 0}
     color: #fff;
 }
 
+.app-btn--green:hover{
+    background:rgba(26, 188, 156,1);
+}
+
 .app-btn--red {
     border: solid 1px rgba(231, 76, 60,0.2);
     background:rgba(231, 76, 60,0.5);
     color: #fff;
 }
-    
+
+.app-btn--red:hover{
+    background:rgba(231, 76, 60,0.7);
+}
+
 .icon {
     display: inline-block;
     width: 18px;

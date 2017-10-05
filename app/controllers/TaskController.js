@@ -1,6 +1,6 @@
 class TaskController {
-  constructor($scope, LocalStore) {
-    this.LocalStore = LocalStore;
+  constructor($scope, TaskService) {
+    this.TaskService = TaskService;
     this.$scope = $scope;
   }
 
@@ -12,8 +12,8 @@ class TaskController {
   // This method will be called each time the component will be initialised,
   // In our case, it will be called for every page route change.
   $onInit(){
-    this.taskList = this.LocalStore.get();
-    
+    this.taskList = this.TaskService.getTasks();
+  
     this.$scope.taskList = this.taskList;
     this.$scope.newTask = '';
     this.$scope.selectedTask = null;
@@ -21,24 +21,24 @@ class TaskController {
 
   handleAddTask() {
       const newTask = {
+        id: this.taskList.length + 1,
         title: this.$scope.newTask.trim(),
         isCompleted: false
       };
       if(newTask.title === '') {
         return;
       }
-      this.$scope.taskList.unshift(newTask);
+      
+      this.TaskService.addTask(newTask);
       this.$scope.newTask = '';
-      this.LocalStore.update(this.$scope.taskList);
   }
 
   handleDeleteTask(task) {
-    this.$scope.taskList.splice(this.$scope.taskList.indexOf(task), 1);
-    this.LocalStore.update(this.$scope.taskList);
+    this.TaskService.deleteTask(task);
   }
 
-  handleToggleTask() { 
-    this.LocalStore.update(this.$scope.taskList);
+  handleToggleTask(task) {
+    this.TaskService.updateTask(task); 
   }
 
   handleEditTask(task) {
@@ -46,8 +46,8 @@ class TaskController {
     this.$scope.selectedTask = task;
   }
 
-  handleSave() {
-    this.LocalStore.update(this.$scope.taskList);
+  handleSave(task) {
+    this.TaskService.updateTask(task);
     this.resetEditTask();
   }
 
@@ -57,5 +57,5 @@ class TaskController {
   }
 }
 
-TaskController.$inject = ['$scope', 'LocalStore'];
+TaskController.$inject = ['$scope', 'TaskService'];
 export default TaskController;  

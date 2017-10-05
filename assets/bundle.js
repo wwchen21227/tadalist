@@ -74,34 +74,23 @@ var _angular = __webpack_require__(1);
 
 var _angular2 = _interopRequireDefault(_angular);
 
-var _base = __webpack_require__(3);
+__webpack_require__(3);
 
-var _base2 = _interopRequireDefault(_base);
+var _LocalStore = __webpack_require__(8);
+
+var _LocalStore2 = _interopRequireDefault(_LocalStore);
+
+var _TaskService = __webpack_require__(9);
+
+var _TaskService2 = _interopRequireDefault(_TaskService);
+
+var _TaskController = __webpack_require__(10);
+
+var _TaskController2 = _interopRequireDefault(_TaskController);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var app = _angular2.default.module('tadalist', []);
-
-app.controller('ToDoController', ['$scope', function ($scope) {
-  $scope.newTask = '';
-  $scope.taskList = [{ title: 'aasdasd', isCompleted: false }, { title: 'bdfsdfs', isCompleted: false }];
-
-  $scope.addTask = function () {
-    var newTask = {
-      title: $scope.newTask.trim(),
-      isCompleted: false
-    };
-    if (newTask.title === '') {
-      return;
-    }
-    $scope.taskList.push(newTask);
-    $scope.newTask = '';
-  };
-
-  $scope.deleteTask = function (task) {
-    $scope.taskList.splice($scope.taskList.indexOf(task), 1);
-  };
-}]);
+_angular2.default.module('tadalist', []).service('LocalStore', _LocalStore2.default).service('TaskService', _TaskService2.default).controller('TaskController', _TaskController2.default);
 
 /***/ }),
 /* 1 */
@@ -31924,7 +31913,7 @@ exports = module.exports = __webpack_require__(5)(undefined);
 
 
 // module
-exports.push([module.i, "body{\r\n    background: #000;\r\n}\r\nul{\r\n    list-style: none;\r\n}\r\n\r\nul li{border: 1px #000 solid;}", ""]);
+exports.push([module.i, "* {\r\n    box-sizing: border-box;\r\n    padding: 0;\r\n    margin: 0;\r\n}\r\n\r\nbody{\r\n    font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\";\r\n    font-size: 16px;\r\n    line-height: 1.5;\r\n    background: #efefef;\r\n}\r\n\r\na{\r\n    text-decoration: none;\r\n    color:#333;\r\n}\r\n\r\na:hover{\r\n    text-decoration: underline;\r\n}\r\n\r\nbutton:focus{outline: 0}\r\n\r\n.app-container {\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n\r\n.task-container{\r\n    max-width: 460px;\r\n    width: 100%;\r\n    background: #fff;\r\n    margin-top: 2rem;\r\n    padding:1rem;\r\n    box-shadow: 0 3px 6px 1px rgba(0,0,0,.08), 0 7px 14px 1px rgba(50,50,93,.1);\r\n    border-radius: 5px;\r\n}\r\n\r\n.task-header {\r\n    font-size: 22px;\r\n    position: relative;\r\n    padding-left: 10px;\r\n}\r\n\r\n.task-header::before{\r\n    content: '';\r\n    width: 3px;\r\n    height: 80%;\r\n    position:absolute;\r\n    left: 0;\r\n    top: 4px;\r\n    background: rgba(52, 152, 219,1.0);\r\n}\r\n\r\n.task-input-box{\r\n   margin: 10px;\r\n}\r\n\r\n.task-list {\r\n    list-style: none;\r\n}\r\n\r\n.task-list-item {\r\n    position: relative;\r\n}\r\n\r\n.task-list-item.editing {\r\n    padding: 10px;\r\n    background: #eaeaea;\r\n    border-radius: 3px;\r\n    border: 1px solid #ddd;\r\n}\r\n\r\n.task-list-item:hover .task-actions--show-on-hover{\r\n    display: inline-block;\r\n}\r\n\r\n.task-list-item.editing .task-actions--show-on-hover {\r\n    display: none;\r\n}\r\n\r\n.task-title{ \r\n    font-size: 18px;\r\n}\r\n\r\n.task-list-item.completed .task-title{  \r\n    text-decoration: line-through;\r\n}\r\n\r\n.task-list-item.completed .task-title > a{  \r\n    color: #999;\r\n    font-size: 0.8em;\r\n}\r\n\r\n.task-list-item.completed .task-title > a:hover{\r\n    text-decoration: none;\r\n}\r\n\r\n.task-actions--show-on-hover,\r\n.editing .state--in-view,\r\n.state--in-edit{\r\n    display:none;\r\n}\r\n\r\n.state--in-view,\r\n.editing .state--in-edit{\r\n    display:block;\r\n}\r\n\r\n.app-textbox{\r\n    outline: 0;\r\n}\r\n\r\n.app-textbox--primary {\r\n    font-size: 20px;\r\n    width: 80%;\r\n    border: 0;\r\n    border-bottom: 1px solid #a1a1a1;\r\n    padding-bottom:5px;\r\n}\r\n\r\n.app-textbox--secondary {\r\n    width: 100%;\r\n    padding: 10px;\r\n    border: 0;\r\n}\r\n\r\n.app-textbox::-webkit-input-placeholder {\r\n    color: #ccc;\r\n}\r\n\r\n.task-actions--primary{\r\n    position: absolute;\r\n    left: -53px;\r\n    top: -3px;\r\n}\r\n\r\n.float-right{\r\n    float: right;\r\n}\r\n\r\n.float-left{\r\n    float: left;\r\n}\r\n\r\n.m-t-10px {\r\n    margin-top: 10px;\r\n}\r\n\r\n.text-right{\r\n    text-align: right;\r\n}\r\n\r\n.task-list-item.completed .app-btn--edit{\r\n    display: none;\r\n}\r\n\r\n.app-btn{\r\n    border: 0;\r\n    background: none;\r\n    cursor: pointer;\r\n    transition:background .25s;\r\n}\r\n\r\n.app-btn--primary{\r\n    border: solid 1p #a1a1a1;\r\n    padding: 10px 20px;\r\n    border-radius: 999em;\r\n}\r\n\r\n.app-btn--secondary{\r\n    border: solid 1px #a1a1a1;\r\n    padding: 5px 10px;\r\n    border-radius: 999em;\r\n    font-size: 0.7em;\r\n}\r\n\r\n.app-btn--green {\r\n    border: solid 1px rgba(26, 188, 156,1.0);\r\n    background:rgba(26, 188, 156,0.8);\r\n    color: #fff;\r\n}\r\n\r\n.app-btn--green:hover{\r\n    background:rgba(26, 188, 156,1);\r\n}\r\n\r\n.app-btn--red {\r\n    border: solid 1px rgba(231, 76, 60,0.2);\r\n    background:rgba(231, 76, 60,0.5);\r\n    color: #fff;\r\n}\r\n\r\n.app-btn--red:hover{\r\n    background:rgba(231, 76, 60,0.7);\r\n}\r\n\r\n.icon {\r\n    display: inline-block;\r\n    width: 18px;\r\n    height: 18px;\r\n    stroke-width: 0;\r\n    stroke: currentColor;\r\n    fill: #454545;\r\n  }\r\n\r\n  @media (max-width: 599px) { \r\n    .task-container{\r\n        width: 94%;\r\n        margin: 1rem auto;\r\n    }   \r\n    .app-textbox--primary {\r\n        width: 70%;\r\n    }\r\n  }", ""]);
 
 // exports
 
@@ -32477,6 +32466,212 @@ module.exports = function (css) {
 	return fixedCss;
 };
 
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var STORE_ID = 'task:store';
+
+var LocalStore = function () {
+    function LocalStore() {
+        _classCallCheck(this, LocalStore);
+    }
+
+    _createClass(LocalStore, [{
+        key: 'isSupported',
+        value: function isSupported() {
+            try {
+                return !!localStorage.getItem;
+            } catch (exception) {
+                return false;
+            }
+        }
+    }, {
+        key: 'update',
+        value: function update(tasks) {
+            localStorage.setItem(STORE_ID, JSON.stringify(tasks));
+        }
+    }, {
+        key: 'get',
+        value: function get() {
+            return JSON.parse(localStorage.getItem(STORE_ID)) || [];
+        }
+    }]);
+
+    return LocalStore;
+}();
+
+exports.default = LocalStore;
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var TaskService = function () {
+    function TaskService(LocalStore) {
+        _classCallCheck(this, TaskService);
+
+        this.tasks = [];
+        this.LocalStore = LocalStore;
+    }
+
+    _createClass(TaskService, [{
+        key: 'addTask',
+        value: function addTask(newTask) {
+            this.tasks.unshift(newTask);
+            this.LocalStore.update(this.tasks);
+        }
+    }, {
+        key: 'updateTask',
+        value: function updateTask(task) {
+            this.tasks[this.findIndexById(task.id)] = task;
+            this.LocalStore.update(this.tasks);
+        }
+    }, {
+        key: 'getTasks',
+        value: function getTasks() {
+            this.tasks = this.LocalStore.get();
+            return this.tasks;
+        }
+    }, {
+        key: 'deleteTask',
+        value: function deleteTask(task) {
+            this.tasks.splice(this.findIndexById(task.id), 1);
+            this.LocalStore.update(this.tasks);
+
+            return this.tasks;
+        }
+    }, {
+        key: 'findIndexById',
+        value: function findIndexById(id) {
+            return this.tasks.findIndex(function (item) {
+                return item.id === id;
+            });
+        }
+    }]);
+
+    return TaskService;
+}();
+
+TaskService.$inject = ['LocalStore'];
+
+exports.default = TaskService;
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var TaskController = function () {
+  function TaskController($scope, TaskService) {
+    _classCallCheck(this, TaskController);
+
+    this.TaskService = TaskService;
+    this.$scope = $scope;
+  }
+
+  _createClass(TaskController, [{
+    key: 'resetEditTask',
+    value: function resetEditTask() {
+      this.$scope.originalTask = null;
+      this.$scope.selectedTask = null;
+    }
+
+    // This method will be called each time the component will be initialised,
+    // In our case, it will be called for every page route change.
+
+  }, {
+    key: '$onInit',
+    value: function $onInit() {
+      this.taskList = this.TaskService.getTasks();
+
+      this.$scope.taskList = this.taskList;
+      this.$scope.newTask = '';
+      this.$scope.selectedTask = null;
+    }
+  }, {
+    key: 'handleAddTask',
+    value: function handleAddTask() {
+      var newTask = {
+        id: this.taskList.length + 1,
+        title: this.$scope.newTask.trim(),
+        isCompleted: false
+      };
+      if (newTask.title === '') {
+        return;
+      }
+
+      this.TaskService.addTask(newTask);
+      this.$scope.newTask = '';
+    }
+  }, {
+    key: 'handleDeleteTask',
+    value: function handleDeleteTask(task) {
+      this.TaskService.deleteTask(task);
+    }
+  }, {
+    key: 'handleToggleTask',
+    value: function handleToggleTask(task) {
+      this.TaskService.updateTask(task);
+    }
+  }, {
+    key: 'handleEditTask',
+    value: function handleEditTask(task) {
+      this.$scope.originalTask = Object.assign({}, task);
+      this.$scope.selectedTask = task;
+    }
+  }, {
+    key: 'handleSave',
+    value: function handleSave(task) {
+      this.TaskService.updateTask(task);
+      this.resetEditTask();
+    }
+  }, {
+    key: 'handleCancelEdit',
+    value: function handleCancelEdit(task) {
+      this.taskList[this.taskList.indexOf(task)] = this.$scope.originalTask;
+      this.resetEditTask();
+    }
+  }]);
+
+  return TaskController;
+}();
+
+TaskController.$inject = ['$scope', 'TaskService'];
+exports.default = TaskController;
 
 /***/ })
 /******/ ]);

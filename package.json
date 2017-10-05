@@ -7,7 +7,7 @@
     "webpack-dev-server": "^2.9.1"
   },
   "devDependencies": {
-    "angular-mocks": "^1.6.6",
+    "angular-mocks": "^1.5.8",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.0",
@@ -16,14 +16,16 @@
     "install": "^0.10.1",
     "jasmine": "^2.8.0",
     "karma": "^1.7.1",
+    "karma-babel-preprocessor": "^7.0.0",
     "karma-chrome-launcher": "^2.2.0",
     "karma-jasmine": "^1.1.0",
+    "karma-webpack": "^2.0.4",
     "style-loader": "^0.19.0",
     "webpack-dev-server": "^2.9.1"
   },
   "scripts": {
     "test": "karma start",
-    "start": "webpack-dev-server --inline --hot --colors"
+    "start": "webpack-dev-server --inline --hot --colors --open"
   },
   "author": "CWW",
   "license": "ISC"

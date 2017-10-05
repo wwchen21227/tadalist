@@ -1,16 +1,18 @@
-describe('TaskController', function() {
-    var $controller, TaskController;
+ 
+describe('true', function() {
 
     beforeEach(angular.mock.module('tadalist'));
+    
+    describe('TaskController',function() {
+        var taskCtrl, scope;
+        beforeEach(inject(function($rootScope, $controller){ //instantiate controller using $controller service
+            scope = $rootScope.$new();
+            taskCtrl = $controller('TaskController', {'$scope': scope});
+        }));
 
-    // Inject the $controller service to create instances of the controller (UsersController) we want to test
-    beforeEach(inject(function(_$controller_) {
-        $controller = _$controller_;
-        TaskController = $controller('TaskController', {});
-    }));
-
-    // Verify our controller exists
-    it('should be defined', function() {
-        expect(TaskController).toBeDefined();
+        it('Mode should be fun', function(){  //write tests
+            expect(scope.originalTask).toBe(undefined); //pass
+        });
     });
+
 });
