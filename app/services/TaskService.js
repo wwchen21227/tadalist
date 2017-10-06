@@ -32,6 +32,12 @@ class TaskService {
             return item.id === id;
         });
     }
+
+    find(id) {
+        return this.tasks.find((item) => {
+            return item.id === id;
+        });
+    }
 }
 
 TaskService.$inject = ['LocalStore'];

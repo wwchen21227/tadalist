@@ -21,7 +21,7 @@ class TaskController {
 
   handleAddTask() {
       const newTask = {
-        id: this.taskList.length + 1,
+        id: this.$scope.taskList.length + 1,
         title: this.$scope.newTask.trim(),
         isCompleted: false
       };

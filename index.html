@@ -24,10 +24,11 @@
 			<h1 class="task-header">Task List</h1>
 			<div class="task-input-box">
 				<form id="todo-form">
-					<input placeholder="Enter task to do" class="app-textbox app-textbox--primary" ng-model="newTask" autofocus maxlength="300"/>
+					<input placeholder="Enter task" class="app-textbox app-textbox--primary" ng-model="newTask" autofocus maxlength="300"/>
 					<button ng-click="vm.handleAddTask()" class="app-btn app-btn--primary app-btn--green">Add</button>
 				</form>
 			</div>
+			<div class="task-no-result" ng-hide="taskList.length"><span>Horray, no task...</span></div>
 			<ul class="task-list">
 				<li class="task-list-item" ng-repeat="task in taskList track by $index" 
 						ng-class="{completed: task.isCompleted, editing: task == selectedTask}">
@@ -35,7 +36,7 @@
 						<button href="javascript:;" class="app-btn app-btn--edit" ng-click="vm.handleEditTask(task)">
 							<svg class="icon icon-mode_edit"><use xlink:href="#icon-mode_edit"></use></svg>
 						</button>
-						<button href="javascript:;" class="app-btn app-btn--edit" ng-click="vm.handleDeleteTask(task)">
+						<button href="javascript:;" class="app-btn" ng-click="vm.handleDeleteTask(task)">
 							<svg class="icon icon-delete"><use xlink:href="#icon-delete"></use></svg>
 						</button>
 					</div>
